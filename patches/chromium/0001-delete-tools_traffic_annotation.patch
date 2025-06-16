@@ -1,0 +1,54 @@
+From 6bfdecd15a40e64956482377fac864e9f5c99c57 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Sun, 15 Jun 2025 09:06:28 -0700
+Subject: [PATCH] disable tools_traffic_annotation
+
+---
+ DEPS | 31 -------------------------------
+ 1 file changed, 31 deletions(-)
+
+diff --git a/DEPS b/DEPS
+index caa80f811098f..f27e410a827ba 100644
+--- a/DEPS
++++ b/DEPS
+@@ -4516,37 +4516,6 @@ hooks = [
+     ],
+   },
+
+-  # This is used to ensure that all network operations are properly
+-  # annotated so we can document what they're for.
+-  {
+-    'name': 'tools_traffic_annotation_linux',
+-    'pattern': '.',
+-    'condition': 'host_os == "linux" and checkout_traffic_annotation_tools',
+-    'action': [ 'python3',
+-                'src/third_party/depot_tools/download_from_google_storage.py',
+-                '--no_resume',
+-                '--no_auth',
+-                '--num_threads=4',
+-                '--bucket', 'chromium-tools-traffic_annotation',
+-                '-d', 'src/tools/traffic_annotation/bin/linux64',
+-    ],
+-  },
+-
+-# This is used to ensure that all network operations are properly
+-# annotated so we can document what they're for.
+-  {
+-    'name': 'tools_traffic_annotation_windows',
+-    'pattern': '.',
+-    'condition': 'host_os == "win" and checkout_traffic_annotation_tools',
+-    'action': [ 'python3',
+-                'src/third_party/depot_tools/download_from_google_storage.py',
+-                '--no_resume',
+-                '--no_auth',
+-                '--num_threads=4',
+-                '--bucket', 'chromium-tools-traffic_annotation',
+-                '-d', 'src/tools/traffic_annotation/bin/win32',
+-    ],
+-  },
+
+   # Pull down Zucchini test data.
+   {
+--
+2.49.0.windows.1
+
