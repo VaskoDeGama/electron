@@ -15,7 +15,7 @@ index 58d4913cb..446aa3cf0 100755
 
    (options, args) = parser.parse_args()
 
-+  if options.bucket.includes('chromium-tools-traffic_annotation'):
++  if 'chromium-tools-traffic_annotation' in options.bucket:
 +    return 0
 +
    # Make sure we should run at all based on platform matching.
